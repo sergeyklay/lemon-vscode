@@ -14,8 +14,8 @@
     "publisher": "serghei-iakovlev",
     "icon": "images/lemon.png",
     "galleryBanner": {
-        "color": "#272729",
-        "theme": "dark"
+        "color": "#d5e4f1",
+        "theme": "light"
     },
     "readmeFilename": "README.md",
     "engines": {
