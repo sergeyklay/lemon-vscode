@@ -1,11 +1,13 @@
 # Default for those who don't have core.autocrlf set
 * text=auto
 
+.vscode/*.json    linguist-language=jsonc text eol=lf
+
 *.json            text eol=lf
 *.yml             text eol=lf
 *.md              text eol=lf
 *.ts              text eol=lf
-.editorconfig     text eol=lf
+.editorconfig      text eol=lf
 .gitattributes    text eol=lf
 .gitignore        text eol=lf
 .vscodeignore     text eol=lf
