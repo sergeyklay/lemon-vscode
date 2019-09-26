@@ -9,7 +9,7 @@
             "email": "serghei@phalcon.io"
         }
     ],
-    "version": "1.0.0",
+    "version": "1.0.1",
     "license": "SEE LICENSE IN LICENSE",
     "publisher": "serghei-iakovlev",
     "icon": "images/lemon.png",
@@ -63,8 +63,5 @@
                 "path": "./syntaxes/lemon.tmLanguage.json"
             }
         ]
-    },
-    "devDependencies": {
-        "supports-color": "^5.5.0"
     }
 }
