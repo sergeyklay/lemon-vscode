@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-## [1.1.0] - 2019-09-27
+## [1.0.1] - 2019-09-27
 ### Added
  - Added folding support
 
