@@ -33,8 +33,18 @@
         },
         "grammars": {
             "patterns": [
-                { "include": "grammar-rules" },
-                { "include": "grammar-actions" }
+                { "include": "#grammar-rules" },
+                { "include": "#grammar-actions" }
+            ]
+        },
+        "directives": {
+            "patterns": [
+                { "include": "#conditional-directives" },
+                { "include": "#list-directives" },
+                { "include": "#token-class-directives" },
+                { "include": "#token-type-directives" },
+                { "include": "#block-directives" },
+                { "include": "#single-directives" }
             ]
         },
         "grammar-rules": {
@@ -80,39 +90,6 @@
             },
             "patterns": [
                 { "include": "#sources" }
-            ]
-        },
-        "terminals": {
-            "name": "meta.terminal.lemon",
-            "match": "([A-Z][a-zA-Z0-9_]*)(?:\\((\\w+)\\))?\\s*",
-            "captures": {
-                "1": {
-                    "name": "constant.character.terminal.lemon"
-                },
-                "2": {
-                    "name": "variable.parameter.lemon"
-                }
-            }
-        },
-        "nonterminals": {
-            "name": "meta.nonterminal.lemon",
-            "match": "([a-z_][a-zA-Z0-9_]*)(?:\\((\\w+)\\))?\\s*",
-            "captures": {
-                "1": {
-                    "name": "variable.other.lemon"
-                },
-                "2": {
-                    "name": "variable.parameter.lemon"
-                }
-            }
-        },
-        "directives": {
-            "patterns": [
-                { "include": "#conditional-directives" },
-                { "include": "#list-directives" },
-                { "include": "#token-class-directives" },
-                { "include": "#block-directives" },
-                { "include": "#single-directives" }
             ]
         },
         "conditional-directives": {
@@ -175,6 +152,30 @@
                 }
             ]
         },
+        "token-type-directives": {
+            "name": "meta.token-type-directive.lemon",
+            "begin": "^\\s*(%token_type)(?:\\s+({)\\s*([a-zA-Z_][a-zA-Z0-9_]*))",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.directive.lemon"
+                },
+                "2": {
+                    "name": "keyword.operator.begin.lemon"
+                },
+                "3": {
+                    "name": "variable.other.lemon"
+                }
+            },
+            "end": "\\s*(})",
+            "endCaptures": {
+                "1": {
+                    "name": "keyword.operator.end.lemon"
+                }
+            },
+            "patterns": [
+                { "include": "#sources" }
+            ]
+        },
         "block-directives": {
             "name": "meta.block-directive.lemon",
             "begin": "^\\s*(%[a-z_]+)(?:\\s+|\\s*([a-z_][a-zA-Z0-9_]*)\\s*)({)\\s*",
@@ -198,6 +199,42 @@
             "patterns": [
                 { "include": "#sources" }
             ]
+        },
+        "single-directives": {
+            "name": "meta.directive.lemon",
+            "match": "^\\s*(%[a-z_]+)\\s+(\\w+)\\s*",
+            "captures": {
+                "1": {
+                    "name": "keyword.directive.lemon"
+                },
+                "2": {
+                    "name": "variable.other.c"
+                }
+            }
+        },
+        "terminals": {
+            "name": "meta.terminal.lemon",
+            "match": "([A-Z][a-zA-Z0-9_]*)(?:\\((\\w+)\\))?\\s*",
+            "captures": {
+                "1": {
+                    "name": "constant.character.terminal.lemon"
+                },
+                "2": {
+                    "name": "variable.parameter.lemon"
+                }
+            }
+        },
+        "nonterminals": {
+            "name": "meta.nonterminal.lemon",
+            "match": "([a-z_][a-zA-Z0-9_]*)(?:\\((\\w+)\\))?\\s*",
+            "captures": {
+                "1": {
+                    "name": "variable.other.lemon"
+                },
+                "2": {
+                    "name": "variable.parameter.lemon"
+                }
+            }
         },
         "sources": {
             "patterns": [
