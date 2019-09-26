@@ -5,8 +5,8 @@
     "author": "Serghei Iakovlev",
     "contributors": [
         {
-            "name" : "Serghei Iakovlev",
-            "email" : "sadhooklay@gmail.com"
+            "name": "Serghei Iakovlev",
+            "email": "serghei@phalcon.io"
         }
     ],
     "version": "1.0.0",
@@ -63,5 +63,8 @@
                 "path": "./syntaxes/lemon.tmLanguage.json"
             }
         ]
+    },
+    "devDependencies": {
+        "supports-color": "^5.5.0"
     }
 }

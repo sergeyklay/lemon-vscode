@@ -5,27 +5,206 @@
         "There is an #editorsupport channel on the Phalcon Discord Server: https://discord.gg/PNFsSsr",
         "If you would like to discuss an idea or need help or have other feedback you can usually find me (@klay) idling there."
     ],
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
     "name": "Lemon",
     "comment": "Lemon Parser Generator syntax highlighting for VSCode.",
     "version": "1.0.0",
-	"fileTypes": [
+    "fileTypes": [
         "lemon"
     ],
-    "scopeName": "source.lemon",
     "patterns": [
         {
-			"include": "#comments"
+            "include": "#comments"
         },
         {
-			"include": "#grammars"
+            "include": "#grammars"
         },
         {
-			"include": "#directives"
+            "include": "#directives"
         }
     ],
     "repository": {
-        "comments": {},
-        "grammars": {},
-        "directives": {}
-    }
+        "comments": {
+            "patterns": [
+                {
+                    "include": "source.c#comments"
+                }
+            ]
+        },
+        "grammars": {
+            "patterns": [
+                { "include": "grammar-rules" },
+                { "include": "grammar-actions" }
+            ]
+        },
+        "grammar-rules": {
+            "name": "meta.grammar-rule.lemon",
+            "begin": "\\b([a-z_][a-zA-Z_0-9]*)(?:\\((\\w+)\\))?\\s*(::=)\\s*",
+            "beginCaptures": {
+                "1": {
+                    "name": "variable.other.lemon"
+                },
+                "2": {
+                    "name": "variable.parameter.lemon"
+                },
+                "3": {
+                    "name": "keyword.operator.rule.lemon"
+                }
+            },
+            "end": "(\\.)",
+            "endCaptures": {
+                "0": {
+                    "name": "keyword.operator.dot.lemon"
+                }
+            },
+            "patterns": [
+                { "include": "#comments" },
+                { "include": "#terminals" },
+                { "include": "#nonterminals" },
+                { "include": "#conditional-directives" }
+            ]
+        },
+        "grammar-actions": {
+            "name": "meta.grammar-action.lemon",
+            "begin": "({)\\s*",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.operator.begin.lemon"
+                }
+            },
+            "end": "(})",
+            "endCaptures": {
+                "1": {
+                    "name": "keyword.operator.end.lemon"
+                }
+            },
+            "patterns": [
+                { "include": "#sources" }
+            ]
+        },
+        "terminals": {
+            "name": "meta.terminal.lemon",
+            "match": "([A-Z][a-zA-Z0-9_]*)(?:\\((\\w+)\\))?\\s*",
+            "captures": {
+                "1": {
+                    "name": "constant.character.terminal.lemon"
+                },
+                "2": {
+                    "name": "variable.parameter.lemon"
+                }
+            }
+        },
+        "nonterminals": {
+            "name": "meta.nonterminal.lemon",
+            "match": "([a-z_][a-zA-Z0-9_]*)(?:\\((\\w+)\\))?\\s*",
+            "captures": {
+                "1": {
+                    "name": "variable.other.lemon"
+                },
+                "2": {
+                    "name": "variable.parameter.lemon"
+                }
+            }
+        },
+        "directives": {
+            "patterns": [
+                { "include": "#conditional-directives" },
+                { "include": "#list-directives" },
+                { "include": "#token-class-directives" },
+                { "include": "#block-directives" },
+                { "include": "#single-directives" }
+            ]
+        },
+        "conditional-directives": {
+            "name": "meta.conditional-directive.lemon",
+            "match": "^\\s*(%(?:ifn?def|endif))\\s+(\\w+)\\s*",
+            "captures": {
+                "1": {
+                    "name": "keyword.directive.lemon"
+                },
+                "2": {
+                    "name": "entity.name.function.lemon"
+                }
+            }
+        },
+        "list-directives": {
+            "name": "meta.list-directive.lemon",
+            "begin": "^\\s*(%(?:left|right|nonassoc|fallback|wildcard))\\s+",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.directive.lemon"
+                }
+            },
+            "end": "(\\.)",
+            "endCaptures": {
+                "1": {
+                    "name": "keyword.operator.dot.lemon"
+                }
+            },
+            "patterns": [
+                { "include": "#comments" },
+                { "include": "#terminals" },
+                { "include": "#conditional-directives" }
+            ]
+        },
+        "token-class-directives": {
+            "name": "meta.token-class-directive.lemon",
+            "begin": "^\\s*(%token_class)\\s+([a-z_][a-zA-Z0-9_]*)\\s+",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.directive.lemon"
+                },
+                "2": {
+                    "name": "variable.other.lemon"
+                }
+            },
+            "end": "\\s*(\\.)",
+            "endCaptures": {
+                "1": {
+                    "name": "keyword.operator.dot.lemon"
+                }
+            },
+            "patterns": [
+                {
+                    "name": "constant.character.terminal.lemon",
+                    "match": "[A-Z][a-zA-Z_0-9]*"
+                },
+                {
+                    "name": "keyword.operator.separator.lemon",
+                    "match": "[|/]"
+                }
+            ]
+        },
+        "block-directives": {
+            "name": "meta.block-directive.lemon",
+            "begin": "^\\s*(%[a-z_]+)(?:\\s+|\\s*([a-z_][a-zA-Z0-9_]*)\\s*)({)\\s*",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.directive.lemon"
+                },
+                "2": {
+                    "name": "variable.other.lemon"
+                },
+                "3": {
+                    "name": "keyword.operator.begin.lemon"
+                }
+            },
+            "end": "(})",
+            "endCaptures": {
+                "1": {
+                    "name": "keyword.operator.end.lemon"
+                }
+            },
+            "patterns": [
+                { "include": "#sources" }
+            ]
+        },
+        "sources": {
+            "patterns": [
+                { "include": "source.c" },
+                { "include": "source.c++" }
+            ]
+        }
+    },
+    "scopeName": "source.lemon"
 }
