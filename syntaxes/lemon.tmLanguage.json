@@ -1,0 +1,31 @@
+{
+    "information_for_contributors": [
+        "This file initially has been converted from Atom extension: https://github.com/kyursen/language-lemon",
+        "If you want to provide a fix or improvement, please create a pull request against https://github.com/zephir-lang/lemon-vscode repository.",
+        "There is an #editorsupport channel on the Phalcon Discord Server: https://discord.gg/PNFsSsr",
+        "If you would like to discuss an idea or need help or have other feedback you can usually find me (@klay) idling there."
+    ],
+    "name": "Lemon",
+    "comment": "Lemon Parser Generator syntax highlighting for VSCode.",
+    "version": "1.0.0",
+	"fileTypes": [
+        "lemon"
+    ],
+    "scopeName": "source.lemon",
+    "patterns": [
+        {
+			"include": "#comments"
+        },
+        {
+			"include": "#grammars"
+        },
+        {
+			"include": "#directives"
+        }
+    ],
+    "repository": {
+        "comments": {},
+        "grammars": {},
+        "directives": {}
+    }
+}

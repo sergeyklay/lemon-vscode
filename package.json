@@ -1,0 +1,66 @@
+{
+    "name": "language-lemon",
+    "displayName": "Lemon for VSCode",
+    "description": "Lemon Parser Generator syntax highlighting for VSCode.",
+    "author": "Serghei Iakovlev",
+    "contributors": [
+        {
+            "name" : "Serghei Iakovlev",
+            "email" : "sadhooklay@gmail.com"
+        }
+    ],
+    "version": "1.0.0",
+    "license": "SEE LICENSE IN LICENSE",
+    "publisher": "serghei-iakovlev",
+    "galleryBanner": {
+        "color": "#272729",
+        "theme": "dark"
+    },
+    "readmeFilename": "README.md",
+    "engines": {
+        "vscode": "^1.19.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "keywords": [
+        "language",
+        "lemon",
+        "highlight",
+        "syntax",
+        "grammar",
+        "parser"
+    ],
+    "homepage": "https://github.com/sergeyklay/lemon-vscode",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sergeyklay/lemon-vscode.git"
+    },
+    "bugs": {
+        "url": "https://github.com/sergeyklay/lemon-vscode/issues"
+    },
+    "qna": "https://github.com/sergeyklay/lemon-vscode/issues",
+    "markdown": "github",
+    "contributes": {
+        "languages": [
+            {
+                "id": "lemon",
+                "aliases": [
+                    "Lemon",
+                    "lemon"
+                ],
+                "extensions": [
+                    ".lemon"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "lemon",
+                "scopeName": "source.lemon",
+                "path": "./syntaxes/lemon.tmLanguage.json"
+            }
+        ]
+    }
+}
