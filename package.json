@@ -12,6 +12,7 @@
     "version": "1.0.0",
     "license": "SEE LICENSE IN LICENSE",
     "publisher": "serghei-iakovlev",
+    "icon": "images/lemon.png",
     "galleryBanner": {
         "color": "#272729",
         "theme": "dark"
